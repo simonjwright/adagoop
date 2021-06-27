@@ -1,0 +1,56 @@
+project Scaflex_Naming is
+
+   for Source_Files use ();
+
+   package Naming is
+      for Body ("aflex_scanner") use "AFLEXSCN.ADB";
+      for Spec ("aflex_scanner") use "AFLEXSCN.ADS";
+      for Body ("ascan_dfa") use "ASCANDFA.ADB";
+      for Spec ("ascan_dfa") use "ASCANDFA.ADS";
+      for Body ("ascan_io") use "ASCANIO.ADB";
+      for Spec ("ascan_io") use "ASCANIO.ADS";
+      for Body ("ccl") use "CCL.ADB";
+      for Spec ("ccl") use "CCL.ADS";
+      for Body ("command_line_interface2") use "CLI2.ADB";
+      for Spec ("command_line_interface2") use "CLI2.ADS";
+      for Body ("dfa") use "DFA.ADB";
+      for Spec ("dfa") use "DFA.ADS";
+      for Body ("ecs") use "ECS.ADB";
+      for Spec ("ecs") use "ECS.ADS";
+      for Body ("external_file_manager") use "EFM.ADB";
+      for Spec ("external_file_manager") use "EFM.ADS";
+      for Spec ("file_string") use "FSTRING.ADS";
+      for Body ("gen") use "GEN.ADB";
+      for Spec ("gen") use "GEN.ADS";
+      for Spec ("global_constants") use "GLOBALS.ADS";
+      for Spec ("int_io") use "INTIO.ADS";
+      for Body ("main_body") use "MAIN.ADB";
+      for Spec ("main_body") use "MAIN.ADS";
+      for Body ("misc") use "MISC.ADB";
+      for Spec ("misc") use "MISC.ADS";
+      for Body ("misc_defs") use "MISCDEFS.ADB";
+      for Spec ("misc_defs") use "MISCDEFS.ADS";
+      for Body ("nfa") use "NFA.ADB";
+      for Spec ("nfa") use "NFA.ADS";
+      for Body ("parser") use "PARSER.ADB";
+      for Spec ("parser") use "PARSER.ADS";
+      for Spec ("parse_goto") use "PGOTO.ADS";
+      for Spec ("parse_shift_reduce") use "PSR.ADS";
+      for Spec ("parse_tokens") use "PTOKENS.ADS";
+      for Body ("scaflex") use "SCAFLEX.ADB";
+      for Body ("scanner") use "SCANNER.ADB";
+      for Spec ("scanner") use "SCANNER.ADS";
+      for Body ("skeleton_manager") use "SKELMGR.ADB";
+      for Spec ("skeleton_manager") use "SKELMGR.ADS";
+      for Body ("sym") use "SYM.ADB";
+      for Spec ("sym") use "SYM.ADS";
+      for Body ("tblcmp") use "TBLCMP.ADB";
+      for Spec ("tblcmp") use "TBLCMP.ADS";
+      for Body ("template_manager") use "TEMPMGR.ADB";
+      for Spec ("template_manager") use "TEMPMGR.ADS";
+      for Spec ("tstring") use "TSTRING.ADS";
+      for Body ("vstrings") use "VSTRINGS.ADB";
+      for Spec ("vstrings") use "VSTRINGS.ADS";
+   end Naming;
+
+end Scaflex_Naming;

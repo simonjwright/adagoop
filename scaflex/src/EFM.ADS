@@ -25,23 +25,23 @@
 -- NOTES This package opens external files, and thus may be system dependent
 --       because of limitations on file names.
 --       This version is for the VADS 5.5 Ada development system.
--- $Header: /co/ua/self/arcadia/aflex/ada/src/RCS/file_managerS.a,v 1.4 90/01/12 15:20:00 self Exp Locker: self $ 
+-- $Header: /co/ua/self/arcadia/aflex/ada/src/RCS/file_managerS.a,v 1.4 90/01/12 15:20:00 self Exp Locker: self $
 
 -- History
--- 14-Jun-1991		Rolf EBERT	
+-- 14-Jun-1991          Rolf EBERT
 --    added the function STD_Error.
 
-with TEXT_IO; use TEXT_IO; 
-package EXTERNAL_FILE_MANAGER is 
+with TEXT_IO; use TEXT_IO;
+package EXTERNAL_FILE_MANAGER is
 
-  function STD_Error return File_Type;
+  STD_Error : File_Type;
   -- added as proposed by 'PORTING'
   -- should always be defined here (!), thus, changes were only in the body
 
-  procedure GET_IO_FILE(F : in out FILE_TYPE); 
-  procedure GET_DFA_FILE(F : in out FILE_TYPE); 
-  procedure GET_SCANNER_FILE(F : in out FILE_TYPE); 
-  procedure GET_BACKTRACK_FILE(F : in out FILE_TYPE); 
-  procedure INITIALIZE_FILES; 
+  procedure GET_IO_FILE(F : in out FILE_TYPE);
+  procedure GET_DFA_FILE(F : in out FILE_TYPE);
+  procedure GET_SCANNER_FILE(F : in out FILE_TYPE);
+  procedure GET_BACKTRACK_FILE(F : in out FILE_TYPE);
+  procedure INITIALIZE_FILES;
   procedure CLOSE_FILES;
-end EXTERNAL_FILE_MANAGER; 
+end EXTERNAL_FILE_MANAGER;
