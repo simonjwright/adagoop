@@ -1,0 +1,5 @@
+WRITE OPEN WRITE PROCEDURE WRITE OPEN 
+-- test comment
+-- test comment2
+WRITE OPEN WRITE
+-- test comment3

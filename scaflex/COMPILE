@@ -1,0 +1,9 @@
+#!/bin/sh
+#COMPILE the scaflex tool
+
+#Use GNATMAKE
+gnatmake scaflex
+rm *.o *.ali
+
+#Show output file
+ls -l scaflex

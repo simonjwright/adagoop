@@ -1,0 +1,14 @@
+#!/bin/sh
+#COMPILE the scayacc tool
+
+#Print warning
+echo Do not worry about the warnings in cli2 and parser
+echo 2 warnings on cli2.adb:119:17
+echo 2 warnings on parser.adb:229:15
+
+#Use GNATMAKE
+gnatmake scayacc
+rm *.o *.ali
+
+#Show output file
+ls -l scayacc

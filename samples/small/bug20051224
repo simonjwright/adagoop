@@ -1,0 +1,162 @@
+with Ada.Command_Line;
+use Ada.Command_Line;
+with ada.text_io;
+use ada.text_io;
+--with test_parser;
+with test_model;
+with DFS_Print;
+with a_model;
+procedure tool is
+   Parse_Tree : access a_model.a_nonterminal'class;
+begin
+--   if argument_count /= 1 then
+--      put_line("usage: tool filename");
+--     return;
+--   end if;
+--   test_parser.run(argument(1));
+--   parse_tree := test_parser.get_parse_tree;
+   parse_tree := new a_model.a_nonterminal1;
+   parse_tree.Visitor(new DFS_Print.DFS);
+end tool;-- Automatically generated file
+-- from AdaGOOP2005 (by Martin C. Carlisle)
+-- If modified, be careful about losing work.
+with Ada.Text_IO;
+use Ada.Text_IO;
+with DFS_Print;
+package body A_model is
+   procedure Visitor(This : access A_nonterminal1;
+      I : access test_Visitor_Interface.Visit_test_Interface'Class) is
+   begin
+      --I.Traverse_A_nonterminal1(This);
+      if I=null then
+         Put_Line("help!!");
+      end if;
+      if not (I.all in DFS_Print.DFS'Class) then
+         Put_Line("Help!!");
+      end if;
+      Test_Visitor_Interface.Traverse_A_Nonterminal1(I,This);
+   end Visitor;
+
+
+end A_model;
+-- Automatically generated file
+-- from AdaGOOP2005 (by Martin C. Carlisle)
+-- If modified, be careful about losing work.
+with test_model;
+use test_model;
+with test_Visitor_Interface;
+package A_model is
+   type A_nonterminal is abstract tagged null record;
+   procedure Visitor(This : access A_nonterminal;
+      I : access test_Visitor_Interface.Visit_test_Interface'Class) is abstract;
+   type A_nonterminal1 is new A_nonterminal with record
+      A_part : access A_model.A_nonterminal'Class;
+   end record;
+   procedure Visitor(This : access A_nonterminal1;
+      I : access test_Visitor_Interface.Visit_test_Interface'Class);
+end A_model;
+-- Sample DFS.  Only overrode the parseable_token traverse routine
+with Ada.Text_IO;
+with Test_Model;
+package body DFS_Print is
+   procedure Traverse_Parseable_Token(
+      I : access DFS;
+      T : access test_Model.Parseable_Token'Class) is
+   begin
+      Ada.Text_IO.Put_Line("hello");  -- was T.token_String.all
+   end Traverse_Parseable_Token;
+end DFS_Print;
+-- sample DFS.  Only override for a token to print 1 per line
+limited with test_Model;
+with Test_DFS;
+with Test_Visitor_Interface;
+package DFS_Print is
+   type Root is tagged null record;
+   type DFS is new Test_DFS.DFS and Test_Visitor_Interface.Visit_Test_Interface with null record;
+   procedure Traverse_Parseable_Token(
+      I : access DFS;
+      T : access test_Model.Parseable_Token'Class);
+end DFS_Print;
+-- Automatically generated file
+-- from AdaGOOP2005 (by Martin C. Carlisle)
+-- If modified, be careful about losing work.
+package body test_Model is
+   procedure Visitor(This : access Parseable_Token;
+      I : access test_Visitor_Interface.Visit_test_Interface'Class) is
+   begin
+      I.Traverse_Parseable_Token(This);
+   end Visitor;
+end test_Model;
+-- Automatically generated file
+-- from AdaGOOP2005 (by Martin C. Carlisle)
+-- If modified, be careful about losing work.
+--with test;
+with test_Visitor_Interface;
+package test_Model is
+   type String_Ptr is access all String;
+
+   type Parseable is abstract tagged null record;
+   type Parseable_Ptr is access all Parseable'Class;
+   procedure Visitor(This : access Parseable;
+      I : access test_Visitor_Interface.Visit_test_Interface'Class) is abstract;
+
+   type Parseable_Token is new Parseable with record
+      Line         : Natural;
+      Column       : Natural;
+      Token_String : String_Ptr;
+--      Token_Type   : test.Token;
+   end record;
+   type Parseable_Token_Ptr is access all Parseable_Token'Class;
+
+   procedure Visitor(This : access Parseable_Token;
+      I : access test_Visitor_Interface.Visit_test_Interface'Class);
+end test_Model;
+-- Automatically generated file
+-- from AdaGOOP2005 (by Martin C. Carlisle)
+-- If modified, be careful about losing work.
+limited with A_Model;
+limited with test_model;
+package test_Visitor_Interface is
+   type Visit_test_Interface is interface;
+
+   procedure Traverse_Parseable_Token(
+      I : access Visit_test_Interface;
+      T : access test_Model.Parseable_Token'Class) is null;
+
+   procedure Before_A_nonterminal1(
+      I : access Visit_test_Interface;
+      N : access A_Model.A_nonterminal1'Class) is null;
+   procedure Traverse_A_nonterminal1(
+      I : access Visit_test_Interface;
+      N : access A_Model.A_nonterminal1'Class) is abstract;
+   procedure After_A_nonterminal1(
+      I : access Visit_test_Interface;
+      N : access A_Model.A_nonterminal1'Class) is null;
+end test_Visitor_Interface;
+-- Automatically generated file
+-- from AdaGOOP2005 (by Martin C. Carlisle)
+-- If modified, be careful about losing work.
+package body test_DFS is
+   procedure Traverse_A_nonterminal1(
+      I : access DFS;
+      N : access A_Model.A_nonterminal1'Class) is
+   begin
+      I.Before_A_nonterminal1(N);
+      --I.Traverse_Parseable_Token(N.PROCEDURE_part);
+      I.After_A_nonterminal1(N);
+   end Traverse_A_nonterminal1;
+end test_DFS;
+-- Automatically generated file
+-- from AdaGOOP2005 (by Martin C. Carlisle)
+-- If modified, be careful about losing work.
+with A_Model;
+with test_Visitor_Interface;
+use test_Visitor_Interface;
+package test_DFS is
+   type Root is tagged null record;
+   type DFS is new Root and 
+      test_Visitor_Interface.Visit_test_Interface with null record;
+   procedure Traverse_A_nonterminal1(
+      I : access DFS;
+      N : access A_Model.A_nonterminal1'Class);
+end test_DFS;

@@ -1,0 +1,39 @@
+package Msil_Goto is
+
+    type Small_Integer is range -32_000 .. 32_000;
+
+    type Goto_Entry is record
+        Nonterm  : Small_Integer;
+        Newstate : Small_Integer;
+    end record;
+
+  --pragma suppress(index_check);
+
+    subtype Row is Integer range -1 .. Integer'Last;
+
+    type Goto_Parse_Table is array (Row range <>) of Goto_Entry;
+
+    Goto_Matrix : constant Goto_Parse_Table :=
+       ((-1,-1)  -- Dummy Entry.
+-- State  0
+,(-2, 2)
+-- State  1
+
+-- State  2
+
+-- State  3
+
+);
+--  The offset vector
+GOTO_OFFSET : array (0.. 3) of Integer :=
+( 0,
+ 1, 1, 1);
+
+subtype Rule        is Natural;
+subtype Nonterminal is Integer;
+
+   Rule_Length : array (Rule range  0 ..  1) of Natural := ( 2,
+ 1);
+   Get_LHS_Rule: array (Rule range  0 ..  1) of Nonterminal := (-1,
+-2);
+end Msil_Goto;

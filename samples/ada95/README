@@ -1,0 +1,7 @@
+To use:
+
+..\..\adagoop ada95.g ada95
+call ada95_compile
+call ada95p_compile
+
+You will need to add a main program, and a body to the package ada95_model.

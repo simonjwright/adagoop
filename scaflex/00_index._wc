@@ -1,0 +1,57 @@
+===============================================================================
+|Directory                                                                    |
+|  C:\rick\scatc\SCATCDSK\TOOLS\SCAFLEX                                       |
+|                                                                             |
+| FileName                FileSize    Date        Description                 |
+===============================================================================
+COMPILE.BAT               132 Byte  09/14/97  Executable Batch File.
+CLI2.ADS                    1 KB    05/21/97   
+INTIO.ADS                   1 KB    05/21/97   
+AFLEXSCN.ADB              197 Byte  05/21/97   
+ASCANDFA.ADB                1 KB    05/21/97   
+SCANNER.ADS                 1 KB    05/21/97   
+SCANNER.ADB                40 KB    05/21/97   
+ASCANIO.ADB                 6 KB    09/14/97   
+ASCANDFA.ADS                1 KB    05/21/97   
+CLI2.ADB                  778 Byte  09/14/97   
+ASCANIO.ADS                 1 KB    05/21/97   
+CCL.ADB                     4 KB    05/21/97   
+CCL.ADS                     1 KB    05/21/97   
+COMPILE                   114 Byte  09/14/97   
+DFA.ADB                    29 KB    09/14/97   
+DFA.ADS                     2 KB    05/21/97   
+ECS.ADB                     6 KB    05/21/97   
+ECS.ADS                     1 KB    05/21/97   
+FSTRING.ADS                 1 KB    05/21/97   
+EFM.ADB                     4 KB    05/21/97   
+GLOBALS.ADS                 1 KB    05/21/97   
+GEN.ADB                    18 KB    09/14/97   
+GEN.ADS                     1 KB    05/21/97   
+MISC.ADB                   17 KB    05/21/97   
+MAIN.ADB                   17 KB    09/14/97   
+MAIN.ADS                    1 KB    05/21/97   
+GNAT.ADC                    3 KB    09/14/97   
+EFM.ADS                     2 KB    05/21/97   
+MISCDEFS.ADB                6 KB    05/21/97   
+MISCDEFS.ADS               23 KB    05/21/97   
+PGOTO.ADS                   3 KB    05/21/97   
+PSR.ADS                     4 KB    05/21/97   
+PTOKENS.ADS               620 Byte  05/21/97   
+MISC.ADS                    3 KB    05/21/97   
+SKELMGR.ADB                11 KB    09/14/97   
+SKELMGR.ADS                 1 KB    05/21/97   
+NFA.ADB                    19 KB    05/21/97   
+NFA.ADS                     2 KB    05/21/97   
+PARSER.ADS                370 Byte  05/21/97   
+PARSER.ADB                 23 KB    05/21/97   
+TEMPMGR.ADB                18 KB    05/21/97   
+TEMPMGR.ADS                 1 KB    05/21/97   
+SCAFLEX.ADB                 4 KB    09/14/97   
+SYM.ADB                     6 KB    05/21/97   
+SYM.ADS                     2 KB    05/21/97   
+TBLCMP.ADB                 27 KB    05/21/97   
+TBLCMP.ADS                  3 KB    05/21/97   
+TSTRING.ADS                 1 KB    05/21/97   
+VSTRINGS.ADB               22 KB    05/21/97   
+VSTRINGS.ADS               14 KB    05/21/97   
+AFLEXSCN.ADS                1 KB    05/21/97   

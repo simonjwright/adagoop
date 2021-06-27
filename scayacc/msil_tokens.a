@@ -1,0 +1,11 @@
+package Msil_Tokens is
+
+
+with msil_Model;
+use msil_Model;
+
+package msil_tokens is
+
+
+subtype YYSTYPE is msil_Model.Parseable_Ptr;
+

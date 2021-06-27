@@ -1,0 +1,10 @@
+To use:
+
+..\..\adagoop small.g test
+call test_compile
+call testp_compile
+gnatmake -g tool
+
+
+tool takes a single command line parameter (a file) -- see test1 for an
+example

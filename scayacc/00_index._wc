@@ -1,0 +1,74 @@
+===============================================================================
+|Directory                                                                    |
+|  C:\rick\scatc\SCATCDSK\TOOLS\SCAYACC                                       |
+|                                                                             |
+| FileName                FileSize    Date        Description                 |
+===============================================================================
+COMPILE.BAT               296 Byte  09/14/97  Executable Batch File.
+LEXER.ADB                  10 KB    05/21/97   
+COMPILE                   258 Byte  09/14/97   
+SCAYACC.ADB                 4 KB    09/14/97   
+ASTRINGS.ADS                4 KB    05/21/97   
+ASTRINGS.ADB                7 KB    05/21/97   
+ACTIONS.ADS                 2 KB    05/21/97   
+SCAYACCI.ADB                4 KB    09/14/97   
+SCAYACCP.ADB              989 Byte  09/14/97   
+ACTIONS.ADB                 3 KB    05/21/97   
+PARSETEM.ADS                2 KB    05/21/97   
+CLI2.ADB                   16 KB    05/21/97   
+ERFILE.ADS                566 Byte  05/21/97   
+SCAYACCG.ADB                5 KB    09/14/97   
+CLI2.ADS                    7 KB    05/21/97   
+AYACCFN.ADS                 3 KB    05/21/97   
+ERFILE.ADB                 11 KB    05/21/97   
+AYACCFN.ADB                 6 KB    05/21/97   
+LEXER.ADS                   2 KB    05/21/97   
+LALRSYM.ADB                16 KB    05/21/97   
+CLI2RCL.ADB                 2 KB    09/14/97   
+GNAT.ADC                    4 KB    09/14/97   
+PARSER.ADB                 13 KB    09/14/97   
+LISTS.ADB                  17 KB    09/14/97   
+LR0MACH.ADB                24 KB    09/14/97   
+GOTOFILE.ADS                2 KB    05/21/97   
+GOTOFILE.ADB                3 KB    05/21/97   
+LALRSYM.ADS                 3 KB    05/21/97   
+LISTS.ADS                  18 KB    05/21/97   
+PARSETEM.ORG               67 KB    05/21/97   
+LR0MACH.ADS                 6 KB    05/21/97   
+OPTIONS.ADS                 3 KB    05/21/97   
+OPTIONS.ADB                 1 KB    05/21/97   
+OUTFILE.ADS                 1 KB    05/21/97   
+OUTFILE.ADB                15 KB    05/21/97   
+PARSETAB.ADS                2 KB    05/21/97   
+PARSETAB.ADB               17 KB    05/21/97   
+PARSER.ADS                  2 KB    05/21/97   
+RAGGED.ADS                  3 KB    05/21/97   
+RAGGED.ADB                  3 KB    05/21/97   
+PARSETEM.ADB               68 KB    05/21/97   
+RULETAB.ADS                 3 KB    05/21/97   
+RULETAB.ADB                 5 KB    05/21/97   
+SETPACK.ADS                 3 KB    05/21/97   
+SETPACK.ADB                 8 KB    05/21/97   
+SRFILE.ADS                  2 KB    05/21/97   
+SRFILE.ADB                  2 KB    05/21/97   
+SOURCEFI.ADS                3 KB    05/21/97   
+STACKPKG.ADB                3 KB    05/21/97   
+STACKPAC.ADS                3 KB    05/21/97   
+STACKPKG.ADS                4 KB    05/21/97   
+SOURCEFI.ADB                6 KB    05/21/97   
+STACKPAC.ADB                2 KB    05/21/97   
+STRPACK.ADS                 3 KB    05/21/97   
+STRINGPK.ADB               16 KB    05/21/97   
+STRINGPK.ADS               23 KB    05/21/97   
+STRINGSC.ADS               23 KB    05/21/97   
+STRPACK.ADB                 2 KB    05/21/97   
+STRINGSC.ADB               20 KB    05/21/97   
+STRINGLI.ADS              318 Byte  05/21/97   
+SYMINFO.ADS                 3 KB    05/21/97   
+SYMINFO.ADB                 7 KB    05/21/97   
+SYMTAB.ADS                  3 KB    05/21/97   
+TOKFILE.ADS                 2 KB    05/21/97   
+SYMTAB.ADB                  9 KB    05/21/97   
+TOKFILE.ADB                 7 KB    05/21/97   
+VERBFILE.ADS                2 KB    05/21/97   
+VERBFILE.ADB                4 KB    05/21/97   

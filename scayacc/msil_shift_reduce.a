@@ -1,0 +1,34 @@
+package Msil_Shift_Reduce is
+
+    type Small_Integer is range -32_000 .. 32_000;
+
+    type Shift_Reduce_Entry is record
+        T   : Small_Integer;
+        Act : Small_Integer;
+    end record;
+    pragma Pack(Shift_Reduce_Entry);
+
+    subtype Row is Integer range -1 .. Integer'Last;
+
+  --pragma suppress(index_check);
+
+    type Shift_Reduce_Array is array (Row  range <>) of Shift_Reduce_Entry;
+
+    Shift_Reduce_Matrix : constant Shift_Reduce_Array :=
+        ( (-1,-1) -- Dummy Entry
+
+-- state  0
+,( 2, 1),(-1,-6000)
+-- state  1
+,(-1,-1)
+-- state  2
+,( 0,-6001)
+,(-1,-6000)
+-- state  3
+,(-1,-6000)
+);
+--  The offset vector
+SHIFT_REDUCE_OFFSET : array (0.. 3) of Integer :=
+( 0,
+ 2, 3, 5);
+end Msil_Shift_Reduce;
