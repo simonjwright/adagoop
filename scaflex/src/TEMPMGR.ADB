@@ -25,20 +25,20 @@
 --       templates like the skeleton manager.  This would save memory at the
 --       cost of a slight reduction in speed and the necessity of keeping
 --       copies of the template files in a known place.
--- $Header: /dc/uc/self/arcadia/aflex/ada/src/RCS/template_managerB.a,v 1.21 1992/12/29 22:46:15 self Exp self $ 
+-- $Header: /dc/uc/self/arcadia/aflex/ada/src/RCS/template_managerB.a,v 1.21 1992/12/29 22:46:15 self Exp self $
 
 with FILE_STRING, MISC_DEFS, TEXT_IO, EXTERNAL_FILE_MANAGER, MISC, TSTRING;
-use  FILE_STRING, MISC_DEFS, TEXT_IO; 
-package body TEMPLATE_MANAGER is 
+use  FILE_STRING, MISC_DEFS, TEXT_IO;
+package body TEMPLATE_MANAGER is
 
-  type FILE_ARRAY is array(POSITIVE range <>) of VSTRING; 
+  type FILE_ARRAY is array(POSITIVE range <>) of VSTRING;
 
   DFA_TEMPLATE     : constant FILE_ARRAY := (
   --DFA TEMPLATE START
 VSTR("yytext_ptr : integer; -- points to start of yytext in buffer"),
 VSTR(""),
 VSTR("-- yy_ch_buf has to be 2 characters longer than YY_BUF_SIZE because we need"),
-VSTR("-- to put in 2 end-of-buffer characters (this is explained where it is"), 
+VSTR("-- to put in 2 end-of-buffer characters (this is explained where it is"),
 VSTR("-- done) at the end of yy_ch_buf"),
 VSTR("YY_READ_BUF_SIZE : constant integer :=  8192;"),
 VSTR("YY_BUF_SIZE : constant integer := YY_READ_BUF_SIZE * 2; -- size of input buffer"),
@@ -94,15 +94,15 @@ VSTR(""),
 VSTR("procedure YY_DO_BEFORE_ACTION is"),
 VSTR("begin"),
 VSTR("    yytext_ptr := yy_bp;"),
-VSTR("    yy_hold_char := yy_ch_buf(yy_cp);"), 
+VSTR("    yy_hold_char := yy_ch_buf(yy_cp);"),
 VSTR("    yy_ch_buf(yy_cp) := ASCII.NUL;"),
 VSTR("    yy_c_buf_p := yy_cp;"),
 VSTR("end YY_DO_BEFORE_ACTION;"),
 VSTR("")
 --DFA TEMPLATE END
-); 
+);
 
-  DFA_CURRENT_LINE : INTEGER := 1; 
+  DFA_CURRENT_LINE : INTEGER := 1;
 
   IO_TEMPLATE      : constant FILE_ARRAY := (
   --IO TEMPLATE START
@@ -140,7 +140,6 @@ VSTR("-- gets input and stuffs it into 'buf'.  number of characters read, or YY_
 VSTR("-- is returned in 'result'."),
 VSTR(""),
 VSTR("procedure YY_INPUT(buf: out unbounded_character_array; result: out integer; max_size: in integer) is"),
-VSTR("    c : character;"),
 VSTR("    i : integer := 1;"),
 VSTR("    loc : integer := buf'first;"),
 VSTR("begin"),
@@ -164,7 +163,7 @@ VSTR("             skip_line(1);"),
 VSTR("%%"),
 VSTR(""),
 VSTR("         else"),
-VSTR("             get(buf(loc));"), 
+VSTR("             get(buf(loc));"),
 VSTR("         end if; "),
 VSTR(""),
 VSTR("         loc := loc + 1;"),
@@ -190,7 +189,7 @@ VSTR("function yy_get_next_buffer return eob_action_type is"),
 VSTR("    dest : integer := 0;"),
 VSTR("    source : integer := yytext_ptr - 1; -- copy prev. char, too"),
 VSTR("    number_to_move : integer;"),
-VSTR("    ret_val : eob_action_type;"), 
+VSTR("    ret_val : eob_action_type;"),
 VSTR("    num_to_read : integer;"),
 VSTR("begin    "),
 VSTR("    if ( yy_c_buf_p > yy_n_chars + 1 ) then"),
@@ -214,7 +213,7 @@ VSTR("    -- just force an EOF"),
 VSTR(""),
 VSTR("    yy_n_chars := 0;"),
 VSTR("    else"),
-VSTR("    num_to_read := YY_BUF_SIZE - number_to_move - 1;"), 
+VSTR("    num_to_read := YY_BUF_SIZE - number_to_move - 1;"),
 VSTR(""),
 VSTR("    if ( num_to_read > YY_READ_BUF_SIZE ) then"),
 VSTR("        num_to_read := YY_READ_BUF_SIZE;"),
@@ -234,7 +233,7 @@ VSTR("    yy_eof_has_been_seen := true;"),
 VSTR("    else"),
 VSTR("    ret_val := EOB_ACT_RESTART_SCAN;"),
 VSTR("    end if;"),
-VSTR("    "), 
+VSTR("    "),
 VSTR("    yy_n_chars := yy_n_chars + number_to_move;"),
 VSTR("    yy_ch_buf(yy_n_chars) := YY_END_OF_BUFFER_CHAR;"),
 VSTR("    yy_ch_buf(yy_n_chars + 1) := YY_END_OF_BUFFER_CHAR;"),
@@ -251,7 +250,7 @@ VSTR(""),
 VSTR("    return ret_val;"),
 VSTR("end yy_get_next_buffer;"),
 VSTR(""),
-VSTR("procedure yyunput( c : character; yy_bp: in out integer ) is"), 
+VSTR("procedure yyunput( c : character; yy_bp: in out integer ) is"),
 VSTR("    number_to_move : integer;"),
 VSTR("    dest : integer;"),
 VSTR("    source : integer;"),
@@ -317,7 +316,7 @@ VSTR("        -- this code, unfortunately, is somewhat redundant with"),
 VSTR("        -- that above"),
 VSTR(""),
 VSTR("        when EOB_ACT_END_OF_FILE =>"),
-VSTR("        if ( yywrap ) then"), 
+VSTR("        if ( yywrap ) then"),
 VSTR("            yy_c_buf_p := yytext_ptr;"),
 VSTR("            return ASCII.NUL;"),
 VSTR("        end if;"),
@@ -332,7 +331,7 @@ VSTR("        yytext_ptr := yy_c_buf_p;"),
 VSTR("        yy_hold_char := yy_ch_buf(yy_c_buf_p);"),
 VSTR(""),
 VSTR("        return ( input );"),
-VSTR("        when EOB_ACT_RESTART_SCAN =>"), 
+VSTR("        when EOB_ACT_RESTART_SCAN =>"),
 VSTR("        yy_c_buf_p := yytext_ptr;"),
 VSTR(""),
 VSTR("        when EOB_ACT_LAST_MATCH =>"),
@@ -391,85 +390,85 @@ VSTR("   end if;"),
 VSTR("end Close_Output;"),
 VSTR("")
 --IO TEMPLATE END
-); 
+);
 
-  IO_CURRENT_LINE  : INTEGER := 1; 
+  IO_CURRENT_LINE  : INTEGER := 1;
 
-  procedure TEMPLATE_OUT(OUTFILE          : in FILE_TYPE; 
-                         CURRENT_TEMPLATE : in FILE_ARRAY; 
-                         LINE_NUMBER      : in out INTEGER) is 
-    BUF : VSTRING; 
+  procedure TEMPLATE_OUT(OUTFILE          : in FILE_TYPE;
+                         CURRENT_TEMPLATE : in FILE_ARRAY;
+                         LINE_NUMBER      : in out INTEGER) is
+    BUF : VSTRING;
   begin
     while (not (LINE_NUMBER > CURRENT_TEMPLATE'LAST)) loop
-      BUF := CURRENT_TEMPLATE(LINE_NUMBER); 
-      LINE_NUMBER := LINE_NUMBER + 1; 
+      BUF := CURRENT_TEMPLATE(LINE_NUMBER);
+      LINE_NUMBER := LINE_NUMBER + 1;
       if ((FILE_STRING.LEN(BUF) >= 2) and then ((CHAR(BUF, 1) = '%') and (CHAR(
-        BUF, 2) = '%'))) then 
-        exit; 
-      else 
-        FILE_STRING.PUT_LINE(OUTFILE, BUF); 
-      end if; 
-    end loop; 
-  end TEMPLATE_OUT; 
+        BUF, 2) = '%'))) then
+        exit;
+      else
+        FILE_STRING.PUT_LINE(OUTFILE, BUF);
+      end if;
+    end loop;
+  end TEMPLATE_OUT;
 
-  procedure GENERATE_DFA_FILE is 
-    DFA_OUT_FILE : FILE_TYPE; 
+  procedure GENERATE_DFA_FILE is
+    DFA_OUT_FILE : FILE_TYPE;
   begin
-    EXTERNAL_FILE_MANAGER.GET_DFA_FILE(DFA_OUT_FILE); 
-    TEXT_IO.PUT_LINE(DFA_OUT_FILE, "package " & TSTRING.STR(MISC.BASENAME) & 
-      "_dfa" & " is"); 
+    EXTERNAL_FILE_MANAGER.GET_DFA_FILE(DFA_OUT_FILE);
+    TEXT_IO.PUT_LINE(DFA_OUT_FILE, "package " & TSTRING.STR(MISC.BASENAME) &
+      "_dfa" & " is");
 
-    if (DDEBUG) then 
+    if (DDEBUG) then
 
       -- make a scanner that output acceptance information
-      TEXT_IO.PUT_LINE(DFA_OUT_FILE, "aflex_debug : boolean := true;"); 
-    else 
-      TEXT_IO.PUT_LINE(DFA_OUT_FILE, "aflex_debug : boolean := false;"); 
-    end if; 
-    TEMPLATE_OUT(DFA_OUT_FILE, DFA_TEMPLATE, DFA_CURRENT_LINE); 
+      TEXT_IO.PUT_LINE(DFA_OUT_FILE, "aflex_debug : boolean := true;");
+    else
+      TEXT_IO.PUT_LINE(DFA_OUT_FILE, "aflex_debug : boolean := false;");
+    end if;
+    TEMPLATE_OUT(DFA_OUT_FILE, DFA_TEMPLATE, DFA_CURRENT_LINE);
     TEXT_IO.PUT_LINE(DFA_OUT_FILE, "end " & TSTRING.STR(MISC.BASENAME) & "_dfa;"
-      ); 
-    TEXT_IO.NEW_LINE(DFA_OUT_FILE); 
-    TEXT_IO.PUT(DFA_OUT_FILE, "with " & TSTRING.STR(MISC.BASENAME) & "_dfa" & 
-      "; "); 
+      );
+    TEXT_IO.NEW_LINE(DFA_OUT_FILE);
+    TEXT_IO.PUT(DFA_OUT_FILE, "with " & TSTRING.STR(MISC.BASENAME) & "_dfa" &
+      "; ");
     TEXT_IO.PUT_LINE(DFA_OUT_FILE, "use " & TSTRING.STR(MISC.BASENAME) & "_dfa"
-      & "; "); 
+      & "; ");
     TEXT_IO.PUT_LINE(DFA_OUT_FILE, "package body " & TSTRING.STR(MISC.BASENAME)
-      & "_dfa" & " is"); 
-    TEMPLATE_OUT(DFA_OUT_FILE, DFA_TEMPLATE, DFA_CURRENT_LINE); 
+      & "_dfa" & " is");
+    TEMPLATE_OUT(DFA_OUT_FILE, DFA_TEMPLATE, DFA_CURRENT_LINE);
     TEXT_IO.PUT_LINE(DFA_OUT_FILE, "end " & TSTRING.STR(MISC.BASENAME) & "_dfa;"
-      ); 
-  end GENERATE_DFA_FILE; 
+      );
+  end GENERATE_DFA_FILE;
 
-  procedure GENERATE_IO_FILE is 
-    IO_OUT_FILE : FILE_TYPE; 
+  procedure GENERATE_IO_FILE is
+    IO_OUT_FILE : FILE_TYPE;
   begin
-    EXTERNAL_FILE_MANAGER.GET_IO_FILE(IO_OUT_FILE); 
-    TEXT_IO.PUT(IO_OUT_FILE, "with " & TSTRING.STR(MISC.BASENAME) & "_dfa" & 
-      "; "); 
+    EXTERNAL_FILE_MANAGER.GET_IO_FILE(IO_OUT_FILE);
+    TEXT_IO.PUT(IO_OUT_FILE, "with " & TSTRING.STR(MISC.BASENAME) & "_dfa" &
+      "; ");
     TEXT_IO.PUT_LINE(IO_OUT_FILE, "use " & TSTRING.STR(MISC.BASENAME) & "_dfa"
-      & "; "); 
-    TEMPLATE_OUT(IO_OUT_FILE, IO_TEMPLATE, IO_CURRENT_LINE); 
-    TEXT_IO.PUT_LINE(IO_OUT_FILE, "package " & TSTRING.STR(MISC.BASENAME) & 
-      "_io" & " is"); 
-    TEMPLATE_OUT(IO_OUT_FILE, IO_TEMPLATE, IO_CURRENT_LINE); 
+      & "; ");
+    TEMPLATE_OUT(IO_OUT_FILE, IO_TEMPLATE, IO_CURRENT_LINE);
+    TEXT_IO.PUT_LINE(IO_OUT_FILE, "package " & TSTRING.STR(MISC.BASENAME) &
+      "_io" & " is");
+    TEMPLATE_OUT(IO_OUT_FILE, IO_TEMPLATE, IO_CURRENT_LINE);
     TEXT_IO.PUT_LINE(IO_OUT_FILE, "end " & TSTRING.STR(MISC.BASENAME) & "_io;")
-      ; 
-    TEXT_IO.NEW_LINE(IO_OUT_FILE); 
+      ;
+    TEXT_IO.NEW_LINE(IO_OUT_FILE);
     TEXT_IO.PUT_LINE(IO_OUT_FILE, "package body " & TSTRING.STR(MISC.BASENAME)
-      & "_io" & " is"); 
-    TEMPLATE_OUT(IO_OUT_FILE, IO_TEMPLATE, IO_CURRENT_LINE); 
+      & "_io" & " is");
+    TEMPLATE_OUT(IO_OUT_FILE, IO_TEMPLATE, IO_CURRENT_LINE);
     -- If we're generating a scanner for interactive mode we need to generate
     -- a YY_INPUT that stops at the end of each line
     if INTERACTIVE then
         TEXT_IO.PUT_LINE(IO_OUT_FILE,
-	    "            i := i + 1; -- update counter, miss end of loop");
-	TEXT_IO.PUT_LINE(IO_OUT_FILE,
-	    "            exit; -- in interactive mode return at end of line.");
+            "            i := i + 1; -- update counter, miss end of loop");
+        TEXT_IO.PUT_LINE(IO_OUT_FILE,
+            "            exit; -- in interactive mode return at end of line.");
     end if;
-    TEMPLATE_OUT(IO_OUT_FILE, IO_TEMPLATE, IO_CURRENT_LINE);     
+    TEMPLATE_OUT(IO_OUT_FILE, IO_TEMPLATE, IO_CURRENT_LINE);
     TEXT_IO.PUT_LINE(IO_OUT_FILE, "end " & TSTRING.STR(MISC.BASENAME) & "_io;")
-      ; 
-  end GENERATE_IO_FILE; 
+      ;
+  end GENERATE_IO_FILE;
 
-end TEMPLATE_MANAGER; 
+end TEMPLATE_MANAGER;
