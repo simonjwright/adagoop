@@ -13,9 +13,6 @@ ADAGOOP := $(shell echo $(dir $(abspath $(lastword $(MAKEFILE_LIST)))) \
 
 PREFIX = $(basename $(notdir $(INPUT)))
 
-test:
-	echo $(PREFIX)
-
 ADAGOOP_INPUTS = $(INPUT)
 
 ADAGOOP_ADA_PRODUCTS =				\
@@ -48,7 +45,7 @@ SCAYACC_ADA_PRODUCTS =				\
   $(PREFIX)_parser.ads				\
   $(PREFIX)_parser.adb
 
-all: $(ADAGOOP_ADA_PRODUCTS) $(SCAFLEX_ADA_PRODUCTS) $(SCAYACC_ADA_PRODUCTS)
+products: $(ADAGOOP_ADA_PRODUCTS) $(SCAFLEX_ADA_PRODUCTS) $(SCAYACC_ADA_PRODUCTS)
 
 $(ADAGOOP_ADA_PRODUCTS) $(ADAGOOP_OTHER_PRODUCTS):
 	$(ADAGOOP)/adagoop $(ADAGOOP_INPUTS) $(PREFIX)
