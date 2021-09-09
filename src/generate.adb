@@ -39,6 +39,8 @@ package body Generate is
    Start_Symbol_Marker    : constant String := "%start";
    Bad_File : exception;
 
+   With_Debug_Output : Boolean := False;
+
    type Production_Names is array(1..Limits.Symbols_Per_Production) of Unbounded_String;
    type Production_Record is record
       Symbols : Production_Names;
@@ -251,7 +253,9 @@ package body Generate is
          Put_Line(Dfs_Body,"         N : access " & Package_Name & "." & Type_Name & "'Class) is");
          Put_Line(DFS_Body,"      I_Classwide : access DFS'Class := I;");
          Put_Line(Dfs_Body,"   begin");
-         Put_Line(Dfs_Body,"      pragma Debug (Ada.Text_IO.Put_Line(""visiting " & Type_Name & """));");
+         if With_Debug_Output then
+            Put_Line(Dfs_Body,"      pragma Debug (Log_Visit (""" & Type_Name & """, Entering => True));");
+         end if;
          Put_Line(Dfs_Body,"      I_Classwide.Before_" & Type_Name & "(N);");
       end Print_To_Visitor_Interface_Before;
       procedure Print_To_Visitor_Interface_After(
@@ -259,7 +263,9 @@ package body Generate is
             Type_Name : in String) is
       begin
          Put_Line(Dfs_Body,"      I_Classwide.After_" & Type_Name & "(N);");
-         Put_Line(Dfs_Body,"      pragma Debug (Ada.Text_IO.Put_Line(""done " & Type_Name & """));");
+         if With_Debug_Output then
+            Put_Line(Dfs_Body,"      pragma Debug (Log_Visit (""" & Type_Name & """, Entering => False));");
+         end if;
          Put_Line(Dfs_Body,"   end Visit_" & Type_Name & ";");
       end Print_To_Visitor_Interface_After;
       procedure Print_Production(X : in Production_Record) is
@@ -1271,10 +1277,33 @@ package body Generate is
          "      " &
          Prefix & "_Visitor_Interface.Visit_" & Prefix & "_Interface with null record;");
 
-      Ada.Text_IO.Put_Line(DFS_Body,"with Ada.Text_IO;");
-      --  used in pragma Debug
+      if With_Debug_Output then
+         Ada.Text_IO.Put_Line(DFS_Body,"with Ada.Text_IO;");
+      end if;
+
       Ada.Text_IO.Put_Line(DFS_Body,"package body " &
          Prefix & "_DFS is");
+
+      if With_Debug_Output then
+         --  Manages indentation of debug output.
+         Ada.Text_IO.Put_Line (DFS_Body, "   Visit_Depth : Natural := 0;");
+         Ada.Text_IO.Put_Line (DFS_Body, "   procedure Log_Visit (Cla : String; Entering : Boolean) is");
+         Ada.Text_IO.Put_Line (DFS_Body, "   begin");
+         Ada.Text_IO.Put_Line (DFS_Body, "      if Entering then");
+         Ada.Text_IO.Put_Line (DFS_Body, "         for J in 1 .. Visit_Depth loop ");
+         Ada.Text_IO.Put_Line (DFS_Body, "            Ada.Text_IO.Put (""  "");");
+         Ada.Text_IO.Put_Line (DFS_Body, "         end loop;");
+         Ada.Text_IO.Put_Line (DFS_Body, "         Ada.Text_IO.Put_Line (""visiting "" & Cla);");
+         Ada.Text_IO.Put_Line (DFS_Body, "         Visit_Depth := Visit_Depth + 1;");
+         Ada.Text_IO.Put_Line (DFS_Body, "      else");
+         Ada.Text_IO.Put_Line (DFS_Body, "         Visit_Depth := Visit_Depth - 1;");
+         Ada.Text_IO.Put_Line (DFS_Body, "         for J in 1 .. Visit_Depth loop ");
+         Ada.Text_IO.Put_Line (DFS_Body, "            Ada.Text_IO.Put (""  "");");
+         Ada.Text_IO.Put_Line (DFS_Body, "         end loop;");
+         Ada.Text_IO.Put_Line (DFS_Body, "         Ada.Text_IO.Put_Line (""leaving "" & Cla);");
+         Ada.Text_IO.Put_Line (DFS_Body, "      end if;");
+         Ada.Text_IO.Put_Line (DFS_Body, "   end Log_Visit;");
+      end if;
 
       -- go back to the beginning for second pass
       Ada.Text_IO.Reset(File);
@@ -1413,10 +1442,12 @@ package body Generate is
    end Process_Parser;
 
    procedure Process_File
-     (File   : in out Ada.Text_IO.File_Type;
-      Prefix : in String)
+     (File              : in out Ada.Text_IO.File_Type;
+      Prefix            : in     String;
+      With_Debug_Output :        Boolean := False)
    is
    begin
+      Generate.With_Debug_Output := With_Debug_Output;
       Process_Lexer(File,Prefix);
       Unbounded_Prefix := To_Unbounded_String(Prefix);
       Process_Parser(File,Prefix);

@@ -21,7 +21,7 @@ begin
       usage;
       return;
    end if;
-   
+
    declare
       Input_Filename : String := Ada.Command_Line.Argument(1);
       Prefix         : String := Ada.Command_Line.Argument(2);
@@ -32,7 +32,7 @@ begin
             File => Input_File,
             Mode => Ada.Text_IO.In_File,
             Name => Input_Filename);
-      exception 
+      exception
          when Ada.Text_IO.Name_Error =>
             Ada.Text_IO.Put_Line(Input_Filename & " not found");
             return;
@@ -40,9 +40,10 @@ begin
             Ada.Text_IO.Put_Line("problem opening " & Input_Filename);
             return;
       end;
-      Generate.Process_File(
-         File   => Input_File,
-         Prefix => Prefix);
+      Generate.Process_File
+        (File              => Input_File,
+         Prefix            => Prefix,
+         With_Debug_Output => True);
       Ada.Text_IO.Close(Input_File);
    end;
 end adagoop;
