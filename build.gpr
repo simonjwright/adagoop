@@ -1,0 +1,8 @@
+aggregate project Build is
+   for Project_Files use
+   (
+    "adagoop.gpr",
+    "scaflex/scaflex.gpr",
+    "scayacc/scayacc.gpr"
+   );
+end Build;
