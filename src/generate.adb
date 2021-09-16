@@ -1372,7 +1372,8 @@ package body Generate is
       Ada.Text_IO.Put_Line(Parser_File,
          "   begin");
       Ada.Text_IO.Put_Line(Parser_File,
-         "      raise Syntax_Error with S & "" on line "" & integer'image(xpath.Get_Current_Line);");
+         "      raise Syntax_Error with S & "" on line "" &" &
+         " integer'image(" & Prefix & ".Get_Current_Line);");
       Ada.Text_IO.Put_Line(Parser_File,
          "   end YYError;");
       Ada.Text_IO.New_Line(Parser_File);
