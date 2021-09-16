@@ -1,5 +1,7 @@
 AdaGOOP is the Ada Generator of Object-Oriented Parsers.  Using AdaGOOP, you can easily generate a parser which builds an object-oriented parse tree.
 
+It was originally written by [Martin Carlisle](carlislem@acm.org) (see his [AdaGOOP Home Page](https://adagoop.martincarlisle.com)). The changes made here are mainly tidying-up and improving usability.
+
 It's built on top of the SCATC versions of aflex and ayacc.  As SableCC does, AdaGOOP automatically generates code to build a parse tree, and a traversal of the parse tree using the visitor pattern.
 
 ## Building ##
