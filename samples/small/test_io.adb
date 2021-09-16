@@ -4,7 +4,6 @@ package body test_io is
 -- is returned in 'result'.
 
 procedure YY_INPUT(buf: out unbounded_character_array; result: out integer; max_size: in integer) is
-    c : character;
     i : integer := 1;
     loc : integer := buf'first;
 begin

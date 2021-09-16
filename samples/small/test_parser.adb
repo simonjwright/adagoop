@@ -30,7 +30,7 @@ package body test_Parser is
 
    procedure YYError(S : in String := "Syntax Error") is
    begin
-      Put_Line(S & " on line " &          integer'image(test.Get_Current_Line));
+      raise Syntax_Error with S & " on line " & integer'image(test.Get_Current_Line);
    end YYError;
 
 procedure YYParse is
@@ -563,6 +563,10 @@ end yyparse;
          when others => YYError;
       end;
       test.Close_Files;
+   exception
+      when others  =>
+         test.Close_Files;
+         raise;
    end Run;
 
    function Get_Parse_Tree return Parseable_Ptr is

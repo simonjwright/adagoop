@@ -1,21 +1,18 @@
-with Ada.Command_Line;
-use Ada.Command_Line;
-with ada.text_io;
-use ada.text_io;
-with test_parser;
-with test_model;
+with Ada.Command_Line; use Ada.Command_Line;
+with Ada.Text_IO;      use Ada.Text_IO;
+with Test_Parser;
+with Test_Model;
 with DFS_Print;
-with a_model;
-procedure tool is
+procedure Tool is
    type DFS_Access is access all DFS_Print.DFS'Class;
-   Parse_Tree : test_model.parseable_ptr;
-   Visitor : DFS_Access := new DFS_Print.DFS;
+   Parse_Tree : Test_Model.Parseable_Ptr;
+   Visitor    : DFS_Access := new DFS_Print.DFS;
 begin
-   if argument_count /= 1 then
-      put_line("usage: tool filename");
-     return;
+   if Argument_Count /= 1 then
+      Put_Line ("usage: tool filename");
+      return;
    end if;
-   test_parser.run(argument(1));
-   parse_tree := test_parser.get_parse_tree;
-   parse_tree.Acceptor(Visitor);
-end tool;
+   Test_Parser.Run (Argument (1));
+   Parse_Tree := Test_Parser.Get_Parse_Tree;
+   Parse_Tree.Acceptor (Visitor);
+end Tool;
